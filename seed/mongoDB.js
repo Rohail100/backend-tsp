@@ -13,7 +13,7 @@ const staffs = [
     { name: 'David Kim', role: 'Supervisor' }
 ].map(s => ({
     ...s,
-    image: `https://via.placeholder.com/500x500.png?text=${encodeURIComponent(s.name)}`
+    image: `https://placehold.co/500x500/ddd/666?text=${encodeURIComponent(s.name)}`
 }));
 const hotelRooms = [
     {
@@ -23,7 +23,7 @@ const hotelRooms = [
         beds: 1,
         baths: 1,
         description: 'Comfortable deluxe room with city view, queen bed, and modern amenities.',
-        imageUrl: `https://via.placeholder.com/800x600.png?text=${encodeURIComponent('Deluxe Room')}`
+        imageUrl: `https://placehold.co/800x600/ddd/666?text=${encodeURIComponent('Deluxe Room')}`
     },
     {
         title: 'Junior Room',
@@ -32,7 +32,7 @@ const hotelRooms = [
         beds: 1,
         baths: 1,
         description: 'Cozy junior room ideal for solo travelers or couples.',
-        imageUrl: `https://via.placeholder.com/800x600.png?text=${encodeURIComponent('Junior Room')}`
+        imageUrl: `https://placehold.co/800x600/ddd/666?text=${encodeURIComponent('Junior Room')}`
     },
     {
         title: 'Family Room',
@@ -41,7 +41,7 @@ const hotelRooms = [
         beds: 2,
         baths: 1,
         description: 'Spacious family room with two beds, perfect for small families.',
-        imageUrl: `https://via.placeholder.com/800x600.png?text=${encodeURIComponent('Family Room')}`
+        imageUrl: `https://placehold.co/800x600/ddd/666?text=${encodeURIComponent('Family Room')}`
     }
 ];
 
