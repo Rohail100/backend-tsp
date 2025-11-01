@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getStaff } = require('../handlers/staffHandlers');
+const { getStaffs } = require('../handlers/staffHandlers');
 
 // GET /api/staff/  - list staff
-router.get('/', getStaff);
+router.get('/', getStaffs);
 
 module.exports = router;

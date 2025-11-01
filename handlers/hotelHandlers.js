@@ -1,12 +1,16 @@
-let hotels = [
-  { id: 1, name: 'Seaside Inn', location: 'Beach' },
-  { id: 2, name: 'Mountain Lodge', location: 'Hills' },
-];
+const HotelRoom = require('../models/HotelRoom');
 
-function getHotels(req, res) {
-  res.json(hotels);
-}
+async function getHotelRooms(req, res) {
+    try {
+      const rooms = await HotelRoom.find();
+      res.json(rooms);
+    } catch (err) {
+      console.error('Failed to get hotel rooms:', err);
+      res.status(500).json({ error: 'Failed to fetch hotel rooms' });
+    }
+  }
+
 
 module.exports = {
-  getHotels,
+  getHotelRooms,
 };

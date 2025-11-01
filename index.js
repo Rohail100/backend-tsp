@@ -5,7 +5,7 @@ const cors = require('cors');
 const staffRoutes = require('./routes/staffRoutes');
 const hotelRoutes = require('./routes/hotelRoutes');
 const appointmentRoutes = require('./routes/appointmentRoutes');
-// const mongoose = require('mongoose');
+const connectDB = require('./config/db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,14 +14,12 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json()); // For parsing application/json
 
-app.use('/api/staff', staffRoutes);
-app.use('/api/hotels', hotelRoutes);
-app.use('/api/appointments', appointmentRoutes);
+// Connect to MongoDB
+connectDB();
 
-// // Connect to MongoDB
-// mongoose.connect(process.env.MONGODB_URI)
-//   .then(() => console.log('Database connected!'))
-//   .catch(err => console.log(err));
+app.use('/api/staff', staffRoutes);
+app.use('/api/hotel', hotelRoutes);
+app.use('/api/appointments', appointmentRoutes);
 
 app.get('/', (req, res) => {
   res.send('API Server is running');

@@ -1,12 +1,15 @@
-let staff = [
-  { id: 1, name: 'Alice', role: 'Manager' },
-  { id: 2, name: 'Bob', role: 'Reception' },
-];
+const Staff = require('../models/Staff');
 
-function getStaff(req, res) {
-  res.json(staff);
+async function getStaffs(req, res) {
+  try {
+    const staffs = await Staff.find();
+    res.json(staffs);
+  } catch (err) {
+    console.error('Error fetching staffs:', err);
+    res.status(500).json({ error: 'Failed to fetch staffs' });
+  }
 }
 
 module.exports = {
-  getStaff,
+  getStaffs,
 };

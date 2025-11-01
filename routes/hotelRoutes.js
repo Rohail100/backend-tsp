@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getHotels } = require('../handlers/hotelHandlers');
+const { getHotelRooms } = require('../handlers/hotelHandlers');
 
-// GET /api/hotels/ - list hotels
-router.get('/', getHotels);
+// GET /api/hotel/ - list hotels
+router.get('/rooms', getHotelRooms);
 
 module.exports = router;
