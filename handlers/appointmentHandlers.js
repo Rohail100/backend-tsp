@@ -1,20 +1,49 @@
-let appointments = [
-  { id: 1, guest: 'Charlie', time: '2025-11-02T10:00:00Z' },
-];
+const Appointment = require('../models/Appointment');
 
-function getAppointments(req, res) {
-  res.json(appointments);
-}
-
-function createAppointment(req, res) {
-  const { guest, time } = req.body || {};
-  if (!guest || !time) {
-    return res.status(400).json({ error: 'guest and time are required' });
+const getAppointments = async (req, res) => {
+  try {
+    const appointmentsFromDb = await Appointment.find();
+    res.json(appointmentsFromDb);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch appointments' });
   }
-  const newAppointment = { id: Date.now(), guest, time };
-  appointments.push(newAppointment);
-  res.status(201).json(newAppointment);
-}
+};
+
+const createAppointment = async (req, res) => {
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    type,
+    room,
+    checkIn,
+    checkOut,
+    message,
+  } = req.body || {};
+
+  if (!firstName || !lastName || !email || !phone || !type || !room || !checkIn || !checkOut) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  try {
+    const appointment = new Appointment({
+      firstName,
+      lastName,
+      email,
+      phone,
+      type,
+      room,
+      checkIn,
+      checkOut,
+      message,
+    });
+    const saved = await appointment.save();
+    res.status(201).json(saved);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to create appointment' });
+  }
+};
 
 module.exports = {
   getAppointments,
