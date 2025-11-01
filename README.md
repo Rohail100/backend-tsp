@@ -16,6 +16,7 @@ Make sure you have installed:
 
 - Node.js
 - npm or yarn or pnpm
+- MongoDB server running
 
 ---
 
@@ -30,7 +31,11 @@ cd backend-tsp
 ```bash
 npm install
 ```
-### Setup Environment Variables
+### Setup Environment Variables, MONGODB_URI is must
+### Seed MongoDB database
+```bash
+npm run seed
+```
 ### Run in Development
 ```bash
 npm run dev
